@@ -12,7 +12,7 @@ class Categorias extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['permission:Categorías']);
+        $this->middleware(['permission:Cuentas']);
     }
     
     public function index(CategoriasDataTable $dataTable)

@@ -33,6 +33,9 @@ class ProdutosDataTable extends DataTable
             ->editColumn('categoria_id',function($pro){
                 return $pro->categoria->nombre??'';
             })
+            ->editColumn('categoria_dos_id',function($pro){
+                return $pro->categoria_dos->nombre??'';
+            })
             ->editColumn('created_at',function($pro){
                 return $pro->created_at;
             })
@@ -85,23 +88,22 @@ class ProdutosDataTable extends DataTable
                   ->searchable(false)
                   ->title('Opciones')
                   ->addClass('text-center'),
-            Column::make('foto')->searchable(false),
-            Column::make('categoria_id')->searchable(false)->title('Categoría'),
+            // Column::make('foto')->searchable(false),
+            Column::make('categoria_id')->searchable(false)->title('Cuenta contable'),
+            Column::make('categoria_dos_id')->searchable(false)->title('Cuenta contable salida'),
             Column::make('codigo')->title('Código'),
             Column::make('nombre'),
             Column::make('talla')->title('Unidad medida'),
             Column::make('cantidad'),
             Column::make('precio_compra'),
             Column::make('precio_venta'),
-            Column::make('color'),
-            Column::make('cuenta_contable'),
-            Column::make('cuenta_salida'),
+            // Column::make('color'),
+            // Column::make('cuenta_contable'),
+            // Column::make('cuenta_salida'),
             Column::make('incluye_iva'),
-            Column::make('descripcion')
-            ->title('Descripción')
-            ->searchable(false),
-            Column::make('created_at')->title('Creado'),
-            Column::make('updated_at')->title('Actualizado'),
+            // Column::make('descripcion')->title('Descripción')->searchable(false),
+            // Column::make('created_at')->title('Creado'),
+            // Column::make('updated_at')->title('Actualizado'),
         ];
     }
 

@@ -1,7 +1,7 @@
 <div class="btn-group btn-group-sm" role="group" aria-label="...">
 
     @php
-        $nombrepro=($pro->categoria->nombre??'').' '.$pro->codigo.' '.Str::limit($pro->nombre, 20, '...').' '.$pro->color.' '.$pro->talla;
+        $nombrepro=($pro->categoria->nombre??'');
     @endphp
     <button type="button" onclick="selecionarProducto(this);" 
     data-id="{{ $pro->id }}" 

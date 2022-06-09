@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
         // permisos
         Permission::firstOrCreate(['name' => 'Departamentos']);
         Permission::firstOrCreate(['name' => 'Usuarios']);
-        Permission::firstOrCreate(['name' => 'Categorías']);
+        Permission::firstOrCreate(['name' => 'Cuentas']);
         Permission::firstOrCreate(['name' => 'Productos']);
         Permission::firstOrCreate(['name' => 'Ingresos']);
         Permission::firstOrCreate(['name' => 'Salidas']);

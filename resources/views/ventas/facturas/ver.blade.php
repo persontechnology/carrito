@@ -97,12 +97,13 @@
     function cambiarEstado(arg){
         var id=$(arg).val();
         var estado=$(arg).data('estado');
-        console.log(estado)
+        
         var url=$(arg).data('url');
         
         $.blockUI({message:'<h1>Espere por favor.!</h1>'});
-        $.post( url, { id: id })
+        $.post( url, { id,estado })
         .done(function( data ) {
+            console.log(data)
             if(data.success){
                 $.notify(data.success,"success");
             }

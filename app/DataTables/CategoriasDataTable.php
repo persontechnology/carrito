@@ -70,7 +70,7 @@ class CategoriasDataTable extends DataTable
             
             Column::make('nombre'),
             Column::make('codigo'),
-            Column::make('detalle'),
+            // Column::make('detalle'),
             
         ];
     }

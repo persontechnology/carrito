@@ -48,6 +48,9 @@ class Productos extends Controller
             $pro->color=$request->color;
             $pro->cuenta_contable=$request->cuenta_contable;
             $pro->cuenta_salida=$request->cuenta_salida;
+            $pro->codigo_cc=$request->codigo_cc;
+            $pro->categoria_dos_id=$request->categoria_dos;
+
             if($request->incluye_iva){
                 $pro->incluye_iva=true;
             }else{
@@ -105,6 +108,8 @@ class Productos extends Controller
             $pro->color=$request->color;
             $pro->cuenta_contable=$request->cuenta_contable;
             $pro->cuenta_salida=$request->cuenta_salida;
+            $pro->codigo_cc=$request->codigo_cc;
+            $pro->categoria_dos_id=$request->categoria_dos;
             
             if($request->incluye_iva){
                 $pro->incluye_iva=true;

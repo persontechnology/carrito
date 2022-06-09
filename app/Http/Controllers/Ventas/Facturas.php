@@ -164,25 +164,31 @@ class Facturas extends Controller
 
     public function estado(Request $request)
     {
+        
         $factura=Factura::findOrFail($request->id);
+        $factura->estado=$request->estado;
+        // $factura->vendedor_id=User::role('Responsable')->first()->id;
+        
         try {
-            // if($factura->estado=='Entregado'){
-            //     $factura->estado='Anulado';
+            if($factura->estado=='Entregado'){
+                
 
-            //     foreach ($factura->facturaDetalles as $df) {
-            //         $df->producto->cantidad=$df->producto->cantidad+$df->cantidad;
-            //         $df->producto->save();
-            //     }
+                foreach ($factura->facturaDetalles as $df) {
+                    $df->producto->cantidad=$df->producto->cantidad-$df->cantidad;
+                    $df->producto->save();
+                }
 
-            // }else{
-            //     $factura->estado='Entregado';
-            //     foreach ($factura->facturaDetalles as $df) {
-            //         $df->producto->cantidad=$df->producto->cantidad-$df->cantidad;
-            //         $df->producto->save();
-            //     }
-            // }
+            }else if($factura->estado=='Anulado'){
+                
+                foreach ($factura->facturaDetalles as $df) {
+                    $df->producto->cantidad=$df->producto->cantidad+$df->cantidad;
+                    $df->producto->save();
+                }
+            }
             $factura->save();
             return response()->json(['success'=>'Factura '.$factura->estado.' exitosamente']);
+
+            // aqui hacer envios de correo
         } catch (\Exception $th) {
             return response()->json(['error'=>'Ocurrio un error, porfavor vuelva intentar']);
         }

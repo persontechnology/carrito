@@ -70,7 +70,7 @@ Breadcrumbs::for('nuevoCategoria', function ($trail) {
 });
 Breadcrumbs::for('editarCategoria', function ($trail,$categoria) {
     $trail->parent('categorias');
-    $trail->push('Editar categoría', route('editarCategoria',$categoria->id));
+    $trail->push('Editar cuenta', route('editarCategoria',$categoria->id));
 });
 
 // almacen -productos

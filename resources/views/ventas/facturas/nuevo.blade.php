@@ -99,11 +99,11 @@
                             @if ($tipo==='Salida')
                                 <div class="col">
                                     <div class="md-form md-outline my-0">
-                                        <input id="form-lg"  class="form-control is-invalid border-danger text-danger" type="text" value="" name="numero" required>
+                                        <input id="form-lg"  class="form-control is-invalid border-danger text-danger" type="text" value="{{ $ultimaFactura?($ultimaFactura->numero+1):1 }}" name="numero" required>
                                         <label for="form-lg" class="active text-danger"><strong># FACTURA</strong></label>
-                                        @if ($ultimaFactura)
-                                            <small class="form-text text-muted text-right">Última {{ $tipo }}: <strong id="ultimaFactura">{{ $ultimaFactura->numero }}</strong></small>
-                                        @endif    
+                                        
+                                            <small class="form-text text-muted text-right">Última {{ $tipo }}: <strong id="ultimaFactura">{{ $ultimaFactura?($ultimaFactura->numero+1):1 }}</strong></small>
+                                        
                                     </div>
                                     
                                 </div>
@@ -126,11 +126,11 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="md-form md-outline my-0">
-                                    <input id="comprobante"  class="form-control is-invalid border-danger text-danger" type="text" value="{{ old('comprobante') }}" name="comprobante" required>
+                                    <input id="comprobante"  class="form-control is-invalid border-danger text-danger" type="text" value="{{ $ultimaFactura?($ultimaFactura->comprobante+1):1 }}" name="comprobante" required>
                                     <label for="comprobante" class="active text-danger"><strong># Comprobante</strong></label>   
-                                    @if ($ultimaFactura)
-                                        <small class="form-text text-muted text-right">Última {{ $tipo }}: <strong id="ultimaFactura">{{ $ultimaFactura->comprobante }}</strong></small>
-                                    @endif 
+                                    
+                                        <small class="form-text text-muted text-right">Última {{ $tipo }}: <strong id="ultimaFactura">{{ $ultimaFactura?($ultimaFactura->comprobante+1):1 }}</strong></small>
+                                    
                                 </div>
                                 
                             </div>

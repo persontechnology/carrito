@@ -63,6 +63,7 @@ class CarritoController extends Controller
             $factura->iva=Configuracion::first()->iva??12;
             $factura->cliente_id=$user->id;
             $factura->estado='Solicitado';
+            $factura->tipo='Salida';
             
             $factura->save();
 
@@ -91,6 +92,10 @@ class CarritoController extends Controller
             DB::commit();
             
             $request->session()->flash('success','Pedido realizado exitosamente');
+            // envie un correo
+            // si no hay usuario ,enviar un email infoermacodo sus credenciales de acceso para segumiento d el a ocmra
+            // estra pemdienete a su emial #
+            
             return redirect()->route('carrito.carro')->withErrors($validator)->withInput();
         } catch (\Throwable $th) {   
             DB::rollback();

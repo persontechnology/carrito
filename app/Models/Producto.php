@@ -11,5 +11,10 @@ class Producto extends Model
         return $this->belongsTo(Categoria::class);
     }
 
+    public function categoria_dos()
+    {
+        return $this->belongsTo(Categoria::class,'categoria_dos_id');
+    }
+
     
 }

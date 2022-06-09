@@ -18,6 +18,8 @@ class Factura extends Model
         
     }
 
+   
+
     public function cliente()
     {
         return $this->belongsTo(User::class,'cliente_id');

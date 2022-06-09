@@ -21,12 +21,30 @@ class ProductosDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+          
+           
             ->editColumn('foto',function($pro){
                 return view('almacen.productos.foto',['pro'=>$pro])->render();
+            })
+            ->editColumn('incluye_iva',function($pro){
+                return isset($pro->incluye_iva)?'Si':'No';
             })
             ->addColumn('action', function($pro){
                 return view('ventas.facturas.selecionarProducto',['pro'=>$pro])->render();
             })
+            ->editColumn('categoria_id',function($pro){
+                return $pro->categoria->nombre??'';
+            })
+            ->editColumn('categoria_dos_id',function($pro){
+                return $pro->categoria_dos->nombre??'';
+            })
+            ->editColumn('created_at',function($pro){
+                return $pro->created_at;
+            })
+            ->editColumn('updated_at',function($pro){
+                return $pro->updated_at;
+            })
+            
             ->rawColumns(['action','foto']);
     }
 
@@ -70,19 +88,24 @@ class ProductosDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->searchable(false)
-                  ->title('Selecionar')
+                  ->title('Opciones')
                   ->addClass('text-center'),
-            Column::make('foto')->searchable(false),
+            // Column::make('foto')->searchable(false),
+            Column::make('categoria_id')->searchable(false)->title('Cuenta contable'),
+            Column::make('categoria_dos_id')->searchable(false)->title('Cuenta contable salida'),
             Column::make('codigo')->title('Código'),
             Column::make('nombre'),
-            Column::make('talla'),
+            Column::make('talla')->title('Unidad medida'),
             Column::make('cantidad'),
-            Column::make('precio_venta'),
-            Column::make('color'),
-            Column::make('descripcion')
-                ->title('Descripción')
-                ->searchable(false),
             Column::make('precio_compra'),
+            Column::make('precio_venta'),
+            // Column::make('color'),
+            // Column::make('cuenta_contable'),
+            // Column::make('cuenta_salida'),
+            Column::make('incluye_iva'),
+            // Column::make('descripcion')->title('Descripción')->searchable(false),
+            // Column::make('created_at')->title('Creado'),
+            // Column::make('updated_at')->title('Actualizado'),
         ];
     }
 

@@ -6,21 +6,13 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Nueva categoría
+                    Nueva cuenta
                 </div>
 
                 <div class="card-body">
                     <form action="{{ route('guardarCategoria') }}" method="POST">
                         @csrf
-                        <div class="md-form md-outline my-1">
-                            <input type="text" id="nombre" name="nombre" class="form-control @error('nombre') is-invalid @enderror " value="{{ old('nombre') }}" required>
-                            <label for="nombre">Nombre<i class="text-danger">*</i></label>
-                            @error('nombre')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+
                         <div class="md-form md-outline my-1">
                             <input type="text" id="codigo" name="codigo" class="form-control @error('codigo') is-invalid @enderror " value="{{ old('codigo') }}" required>
                             <label for="codigo">Código<i class="text-danger">*</i></label>
@@ -30,9 +22,21 @@
                                 </span>
                             @enderror
                         </div>
-                        
+
 
                         <div class="md-form md-outline my-1">
+                            <input type="text" id="nombre" name="nombre" class="form-control @error('nombre') is-invalid @enderror " value="{{ old('nombre') }}" required>
+                            <label for="nombre">Nombre<i class="text-danger">*</i></label>
+                            @error('nombre')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                       
+                        
+
+                        {{-- <div class="md-form md-outline my-1">
                             <input type="text" id="detalle" name="detalle" class="form-control @error('detalle') is-invalid @enderror " value="{{ old('detalle') }}">
                             <label for="detalle">Detalle</label>
                             @error('detalle')
@@ -40,7 +44,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
+                        </div> --}}
 
 
 

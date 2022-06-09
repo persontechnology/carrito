@@ -13,30 +13,35 @@
                     <form action="{{ route('guardarProducto') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        @if (count($categorias)>0)
-                            <label for="categoria" class="mb-0">Selecione una categoría</label>
-                            <select class="selectpicker show-tick" data-live-search="true" data-width="100%" name="categoria" id="categoria" title="Selecione una categoría">
-                                
-                                @foreach ($categorias as $cat)
-                                    <option value="{{ $cat->id }}" {{ old('categoria')==$cat->id?'selected':'' }} >{{ $cat->nombre }}</option>
-                                @endforeach
-                            </select>
-
-                        @else
-                            <div class="alert alert-dark" role="alert">
-                                <strong>No existe categorías</strong>
+                        
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="md-form md-outline my-1">
+                                    <input type="text" id="codigo" name="codigo" class="form-control @error('codigo') is-invalid @enderror " value="{{ old('codigo') }}" required>
+                                    <label for="codigo">Código MF<i class="text-danger">*</i></label>
+                                    @error('codigo')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        @endif
-
-                        <div class="md-form md-outline my-1">
-                            <input type="text" id="codigo" name="codigo" class="form-control @error('codigo') is-invalid @enderror " value="{{ old('codigo') }}" required>
-                            <label for="codigo">Código<i class="text-danger">*</i></label>
-                            @error('codigo')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <div class="col-md-6">
+                                <div class="md-form md-outline my-1">
+                                    <input type="text" id="codigo_cc" name="codigo_cc" class="form-control @error('codigo_cc') is-invalid @enderror " value="{{ old('codigo_cc') }}" required>
+                                    <label for="codigo_cc">Código CC<i class="text-danger">*</i></label>
+                                    @error('codigo_cc')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
+
+
+                       
+
 
                         <div class="form-row">
                             <div class="col-md-6">
@@ -64,7 +69,7 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="md-form md-outline my-1">
                                     <input id="precio_compra" name="precio_compra" class="form-control @error('precio_compra') is-invalid @enderror" value="{{ old('precio_compra') }}"  required  type="text">
                                     <label for="precio_compra">Precio de compra<i class="text-danger">*</i></label>
@@ -75,7 +80,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="md-form md-outline my-1">
                                     <input id="precio_venta" name="precio_venta" class="form-control @error('precio_venta') is-invalid @enderror" value="{{ old('precio_venta') }}" required type="text">
                                     <label for="precio_venta">Precio de venta<i class="text-danger">*</i></label>
@@ -86,10 +91,7 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="md-form md-outline my-1">
                                     <input id="talla" name="talla" class="form-control @error('talla') is-invalid @enderror" value="{{ old('talla') }}"  required  type="text">
                                     <label for="talla">Unidad de medida<i class="text-danger">*</i></label>
@@ -100,6 +102,50 @@
                                     @enderror
                                 </div>
                             </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md">
+                                @if (count($categorias)>0)
+                                    <label for="categoria" class="mb-0">Selecione cuenta contable</label>
+                                    <select class="selectpicker show-tick" data-live-search="true" data-width="100%" name="categoria" id="categoria" title="Selecione una cuenta">
+                                        
+                                        @foreach ($categorias as $cat)
+                                            <option value="{{ $cat->id }}" {{ old('categoria')==$cat->id?'selected':'' }} >{{ $cat->nombre }}-{{ $cat->codigo }}</option>
+                                        @endforeach
+                                    </select>
+
+                                @else
+                                    <div class="alert alert-dark" role="alert">
+                                        <strong>No existe cuenta</strong>
+                                    </div>
+                                @endif
+                                
+                            </div>
+                            <div class="col-md">
+                                @if (count($categorias)>0)
+                                    <label for="categoria_dos" class="mb-0">Selecione cuenta contable salida</label>
+                                    <select class="selectpicker show-tick" data-live-search="true" data-width="100%" name="categoria_dos" id="categoria_dos" title="Selecione una cuenta">
+                                        
+                                        @foreach ($categorias as $cat)
+                                            <option value="{{ $cat->id }}" {{ old('categoria_dos')==$cat->id?'selected':'' }} >{{ $cat->nombre }}</option>
+                                        @endforeach
+                                    </select>
+
+                                @else
+                                    <div class="alert alert-dark" role="alert">
+                                        <strong>No existe categorías</strong>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                       
+
+
+                        {{-- <div class="form-row">
+                            
                             <div class="col-md-6">
                                 <div class="md-form md-outline my-1">
                                     <input id="color" name="color" class="form-control @error('color') is-invalid @enderror" value="{{ old('color') }}" required type="text">
@@ -111,11 +157,11 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
 
                         <div class="form-row">
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <div class="md-form md-outline my-1">
                                     <input id="cuenta_contable" name="cuenta_contable" class="form-control @error('cuenta_contable') is-invalid @enderror" value="{{ old('cuenta_contable') }}"  required  type="text">
                                     <label for="cuenta_contable">Cuenta contable</label>
@@ -136,7 +182,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-md-4">
                                 
 
@@ -153,7 +199,7 @@
                             </div>
                         </div>
 
-                        <div class="form-row">
+                        {{-- <div class="form-row">
                             <div class="col-md-6">
                                 <div class="md-form md-outline my-1">
                                     <textarea id="descripcion" name="descripcion" class="md-textarea form-control @error('descripcion') is-invalid @enderror" required>{{ old('descripcion') }}</textarea>
@@ -173,7 +219,7 @@
                                     </div>
                                   </div>
                             </div>
-                        </div>
+                        </div> --}}
 
 
 

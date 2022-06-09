@@ -97,10 +97,10 @@
 
 				@endcan
 
-				@can('Categorías')
+				@can('Cuentas')
 					
 				<li class="nav-item">
-					<a class="navbar-nav-link" id="categorias" href="{{ route('categorias')}}"> <i class="fas fa-table mr-1"></i>Categorías</a>
+					<a class="navbar-nav-link" id="categorias" href="{{ route('categorias')}}"> <i class="fas fa-table mr-1"></i>Cuentas</a>
 				</li>
 				@endcan
 
