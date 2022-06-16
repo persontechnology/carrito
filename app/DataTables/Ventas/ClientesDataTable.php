@@ -21,9 +21,13 @@ class ClientesDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addColumn('roles', function($clie){
+                return collect($clie->getRoleNames())->implode(',');
+            })
             ->addColumn('action', function($clie){
                 return view('ventas.facturas.selecionarCliente',['clie'=>$clie])->render();
-            });
+            })
+            ->rawColumns(['roles','action']);
     }
 
     /**
@@ -68,6 +72,10 @@ class ClientesDataTable extends DataTable
                   ->width(60)
                   ->title('Selecionar')
                   ->addClass('text-center'),
+            Column::computed('roles')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->title('Rol'),
             Column::make('apellidos'),
             Column::make('nombres'),
             Column::make('identificacion')->title('Identificación'),

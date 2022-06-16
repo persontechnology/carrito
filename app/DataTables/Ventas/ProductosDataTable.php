@@ -56,7 +56,7 @@ class ProductosDataTable extends DataTable
      */
     public function query(Producto $model)
     {
-        return $model->newQuery()->where('cantidad','>',0);
+        return $model->newQuery();
     }
 
     /**

@@ -306,11 +306,13 @@
 
 @prepend('linksPie')
     <script>
-        @if($tipo==='Ingreso')
-        $('#facturasIngreso').addClass('active');
-        @else
-        $('#facturasSalida').addClass('active');
-        @endif
+        var tipo="{{ $tipo }}";
+
+        if(tipo==='Ingreso'){
+            $('#facturasIngreso').addClass('active');
+        }else{
+            $('#facturasSalida').addClass('active');
+        }
         
         $('#pantallaGrande').removeClass('container');
         $('#pantallaGrande').addClass('container-fluid');
@@ -358,7 +360,14 @@
                             '</tr>';
 
                     $('#detalle_factura').append(fila);
-                    $('#txt_cantidad_'+id_pro ).NumBox({symbol: '',max:$(arg).data('cantidad')});
+                    
+                    
+                    if(tipo==='Salida'){
+                        $('#txt_cantidad_'+id_pro ).NumBox({symbol: '',max:$(arg).data('cantidad')});
+                    }else{
+                        $('#txt_cantidad_'+id_pro ).NumBox({symbol: ''});
+                    }
+                    
                     $('#txt_v_unitario_'+id_pro ).NumBox({symbol: ''});
                     $('#txt_descuento_'+id_pro ).NumBox({symbol: '',max:100});
 
@@ -423,7 +432,7 @@
             var form = $(this);
            
             $.confirm({
-				title: "Confirmar {{ $tipo }}",
+				title: "Confirmar "+tipo,
 				content: $('#txt_cliente').text()+'<br>Total: '+$('#total_factura').text(),
 				theme: 'modern',
 				type:'dark',

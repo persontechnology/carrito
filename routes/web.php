@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\Producto;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $data = array('productos' => Producto::where('cantidad','>','0')->take(8)->get());
+    return view('welcome',$data);
 })->name('welcome');
 // CARRITO DE COMPRAS
 

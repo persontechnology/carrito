@@ -44,6 +44,9 @@ class FacturasDataTable extends DataTable
             ->addColumn('action',function($fac){
                 return view('ventas.facturas.opciones',['fac'=>$fac])->render();
             })
+            ->editColumn('numero',function($fac){
+                return $fac->referencia;
+            })
             ->rawColumns(['action','estado']);
     }
 

@@ -55,9 +55,10 @@ class CarritoController extends Controller
 
         try {
             DB::beginTransaction();
-            
+            $ultimaFactura=Factura::where('tipo','Salida')->latest()->first();
+
             $factura=new Factura();
-            $factura->numero=$request->numero;
+            $factura->numero=$ultimaFactura?($ultimaFactura->numero+1):1;
             $factura->forma_pago=$request->payment;
             $factura->observacion=$request->observacion;
             $factura->iva=Configuracion::first()->iva??12;

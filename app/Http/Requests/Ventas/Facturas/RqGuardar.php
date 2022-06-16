@@ -26,12 +26,19 @@ class RqGuardar extends FormRequest
     public function rules()
     {
         Validator::extend('RqCantidadProducto', function($attribute, $value, $parameters){
-            $producto=Producto::findOrFail($value);  
-            if($producto->cantidad>=1){
-                return true;
+            $tipo=$this->input('tipo');
+
+            if($tipo==='Salida'){
+                $producto=Producto::findOrFail($value);  
+                if($producto->cantidad>=1){
+                    return true;
+                }else{
+                    return false;
+                }
             }else{
-                return false;
+                return true;
             }
+
            },'Cantidad de producto :attribute :value sobrepasa la cantidad existente');
 
 

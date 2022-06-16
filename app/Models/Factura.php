@@ -11,14 +11,12 @@ class Factura extends Model
     public function getReferenciaAttribute()
     {
         if($this->tipo==='Ingreso'){
-            return 'Ingreso #: '.$this->comprobante;
+            return $this->comprobante;
         }else{
-            return 'Salida #: '.$this->numero;
+            return $this->numero;
         }
         
     }
-
-   
 
     public function cliente()
     {
