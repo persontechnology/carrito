@@ -125,7 +125,7 @@
     <!-- Products Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Productos Trandy</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">Productos Trandy EDITAR FREDDDY</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
             @foreach ($productos as $prot)
