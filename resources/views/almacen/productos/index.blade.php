@@ -7,6 +7,9 @@
             <div class="card">
                 <div class="card-header">
                     Productos
+                    <a  href="{{ route('buscarProducto') }}" class="float-right" data-toggle="tooltip" data-placement="top" title="Buscar...">
+                        <i class="fas fa-search ml-3"></i>
+                    </a>
                     <a  href="{{ route('nuevoProducto') }}" class="float-right" data-toggle="tooltip" data-placement="top" title="Ingresar nuevo producto">
                         <i class="fas fa-plus"></i>
                     </a>

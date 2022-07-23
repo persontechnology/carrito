@@ -20,6 +20,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laraveles/spanish": "^1.4",
+        "livewire/livewire": "^2.10",
         "spatie/laravel-permission": "^3.11",
         "tavo1987/laravel-ec-validator": "^2.0",
         "ultramsg/whatsapp-php-sdk": "^2.0",

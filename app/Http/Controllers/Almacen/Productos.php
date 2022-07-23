@@ -186,4 +186,9 @@ class Productos extends Controller
             
         }
     }
+
+    public function buscar()
+    {
+        return view('almacen.productos.buscar');
+    }
 }
