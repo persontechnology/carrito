@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Configuracion;
 use App\Models\Factura;
 use App\Models\FacturaDetalle;
@@ -123,5 +124,18 @@ class CarritoController extends Controller
         return $user;
     }
 
+
+    public function productos($idcat=null)
+    {
+        if(isset($idcat)){
+            $categoria=Categoria::find($idcat);
+            $data = array(
+                'productos' => $categoria->productos
+            );
+        }else{
+            $data = array('productos' => Producto::all() );
+        }
+        return view('carrito.productos',$data);
+    }
     
 }

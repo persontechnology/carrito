@@ -184,13 +184,13 @@
         <div class="row border-top px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                    <h6 class="m-0">Categories</h6>
+                    <h6 class="m-0">Categorías</h6>
                     <i class="fa fa-angle-down text-dark"></i>
                 </a>
                 <nav class="collapse {{ request()->routeIs('welcome')?'show':'' }} position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         @foreach (App\Models\Categoria::latest()->take(9)->get() as $cat)
-                        <a href="" class="nav-item nav-link">{{ $cat->nombre }}</a>    
+                        <a href="{{ route('carrito.productos',$cat->id) }}" class="nav-item nav-link">{{ $cat->nombre }}</a>    
                         @endforeach
                         
                         <a href="" class="nav-item nav-link bg-primary">Ver todas las categorías</a>
@@ -208,8 +208,7 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="{{ route('welcome') }}" class="nav-item nav-link {{ request()->routeIs('welcome')?'active':'' }}">Inicio</a>
-                            <a href="shop.html" class="nav-item nav-link">Categorías</a>
-                            <a href="detail.html" class="nav-item nav-link {{ request()->routeIs('carrito.detalle')?'active':'' }}">Productos</a>
+                            <a href="{{ route('carrito.productos') }}" class="nav-item nav-link {{ request()->routeIs('carrito.*')?'active':'' }}">Productos</a>
                             {{-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">

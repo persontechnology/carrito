@@ -7,8 +7,11 @@ Route::get('/', function () {
     $data = array('productos' => Producto::where('cantidad','>','0')->take(8)->get());
     return view('welcome',$data);
 })->name('welcome');
-// CARRITO DE COMPRAS
 
+Route::get('/carrito-productos/{idcat?}', 'CarritoController@productos')->name('carrito.productos');
+
+
+// CARRITO DE COMPRAS
 Route::get('/carrito-detalle/{id}', 'CarritoController@detalle')->name('carrito.detalle');
 Route::get('/carrito-carro', 'CarritoController@carro')->name('carrito.carro');
 Route::get('/carrito-verificar', 'CarritoController@verificar')->name('carrito.verificar');
