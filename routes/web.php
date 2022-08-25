@@ -54,10 +54,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/categorias-editar/{id}', 'Categorias@editar')->name('editarCategoria');
         Route::post('/categorias-actualizar', 'Categorias@actualizar')->name('actualizarCategoria');
         Route::get('/categorias-eliminar/{id}', 'Categorias@eliminar')->name('eliminarCategoria');
+        Route::get('/categorias-x-producto/{id}', 'Categorias@productos')->name('categoriaXproducto');
         
 
         // productos
-        Route::get('/productos', 'Productos@index')->name('productos');
+        Route::get('/productos/{idcat?}', 'Productos@index')->name('productos');
         Route::get('/productos-nuevo', 'Productos@nuevo')->name('nuevoProducto');
         Route::post('/productos-guardar', 'Productos@guardar')->name('guardarProducto');
         Route::get('/productos-editar/{id}', 'Productos@editar')->name('editarProducto');

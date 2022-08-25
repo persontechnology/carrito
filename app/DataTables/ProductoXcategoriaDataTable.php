@@ -9,7 +9,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ProdutosDataTable extends DataTable
+class ProductoXcategoriaDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -49,17 +49,12 @@ class ProdutosDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \Models/Producto $model
+     * @param \App\Models\ProductoXcategorium $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(Producto $model)
     {
-        if($this->idcat){
-            return $model->where('categoria_id',$this->idcat)->orderBy('codigo','asc');
-        }else{
-            return $model->newQuery()->orderBy('codigo','asc');
-        }
-        
+        return $model->where('categoria_id',$this->id)->orderBy('codigo','asc');
     }
 
     /**
@@ -119,6 +114,6 @@ class ProdutosDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Produtos_' . date('YmdHis');
+        return 'ProductoXcategoria_' . date('YmdHis');
     }
 }

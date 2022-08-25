@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Almacen;
 
 use App\DataTables\CategoriasDataTable;
+use App\DataTables\ProductoXcategoriaDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
@@ -80,5 +81,9 @@ class Categorias extends Controller
         }
         return redirect()->route('categorias');
 
+    }
+    public function productos(ProductoXcategoriaDataTable $dataTable, $id)
+    {
+        return $dataTable->with(['id'=>$id]) ->render('almacen.categorias.productos');
     }
 }

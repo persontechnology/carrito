@@ -19,9 +19,13 @@ class Productos extends Controller
         $this->middleware(['permission:Productos']);
     }
     
-    public function index(ProdutosDataTable $dataTable)
+    public function index(Request $request,ProdutosDataTable $dataTable)
     {
-        return $dataTable->render('almacen.productos.index');
+        $data = array('cuentas' => Categoria::all(),'idcat'=>$request->idcat );
+
+        return $dataTable->with(['idcat'=>$request->idcat])->render('almacen.productos.index',$data);
+        
+        
     }
 
     public function nuevo()

@@ -6,32 +6,13 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="row">
-                        <div class="col-6">
-                            Buscar por cuenta contable
-                            <div class="form-group">
-                                <form action="{{ route('productos') }}" method="GET">
-                                    <select name="idcat" class="form-control" id="exampleFormControlSelect1" onchange="this.form.submit()">
-                                    <option value="">Ninguna</option>
-                                    @foreach ($cuentas as $cc)
-                                        <option value="{{ $cc->id }}" {{ $idcat==$cc->id?'selected':'' }} >{{ $cc->nombre }}</option>
-                                    @endforeach
-                                    </select>
-                                </form>
-                              </div>
-                        </div>
-                        <div class="col-6">
-                            <a  href="{{ route('buscarProducto') }}" class="float-right" data-toggle="tooltip" data-placement="top" title="Buscar...">
-                                <i class="fas fa-search ml-3"></i>
-                            </a>
-                            <a  href="{{ route('nuevoProducto') }}" class="float-right" data-toggle="tooltip" data-placement="top" title="Ingresar nuevo producto">
-                                <i class="fas fa-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    
-                    
+                    Productos
+                    <a  href="{{ route('buscarProducto') }}" class="float-right" data-toggle="tooltip" data-placement="top" title="Buscar...">
+                        <i class="fas fa-search ml-3"></i>
+                    </a>
+                    <a  href="{{ route('nuevoProducto') }}" class="float-right" data-toggle="tooltip" data-placement="top" title="Ingresar nuevo producto">
+                        <i class="fas fa-plus"></i>
+                    </a>
                 </div>
 
                 <div class="card-body">
